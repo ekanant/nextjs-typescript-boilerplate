@@ -1,13 +1,23 @@
 import React, { ReactElement } from 'react'
+import {GetStaticProps} from 'next'
 
 interface Props {
-  
+  myText: string
 }
 
-export default function index({}: Props): ReactElement {
+export default function index(prop: Props): ReactElement {
   return (
-    <div>
-      Hello this is typescript     
-    </div>
+    <>
+      Hello this is typescript<br/>
+      {prop.myText}
+    </>
   )
+}
+
+export const getStaticProps: GetStaticProps  = async ()=>{
+  return {
+    props: {
+      myText: 'This is my text'
+    }
+  }
 }
