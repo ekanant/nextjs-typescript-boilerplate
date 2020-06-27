@@ -1,7 +1,9 @@
 import React, { ReactElement } from 'react'
 import { GetStaticProps } from 'next'
-import Link from '@/components/Link'
+import dynamic from 'next/dynamic'
 import { useTranslation } from '@/i18n'
+
+const Link = dynamic(() => import('@/components/Link'))
 
 interface Props {
   myText: string,
