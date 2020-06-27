@@ -4,9 +4,11 @@
     "dev": "nodemon src/server.ts",
     "build": "next build && rimraf dist && tsc --project tsconfig.build.json",
     "export": "next export",
-    "start": "NODE_ENV=production node dist/server.js"
+    "start": "NODE_ENV=production node dist/server.js",
+    "analyze": "ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^9.4.4",
     "bootstrap": "^4.5.0",
     "compression": "^1.7.4",
     "express": "^4.17.1",
