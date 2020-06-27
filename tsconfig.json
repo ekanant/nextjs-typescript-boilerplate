@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["./src/components/*"],
+      "@/i18n": ["./src/i18n"]
+    },
     "target": "es5",
     "lib": [
       "dom",
@@ -25,11 +30,5 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
-  "baseUrl": ".",
-  "paths": {
-    "@/*": [
-        "src/*"
-    ]
-}
+  ]
 }
