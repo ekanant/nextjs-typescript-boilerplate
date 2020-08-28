@@ -3,8 +3,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 
-const localeSubpaths = {}
-
+const localeSubpaths = {
+  'en-th': 'en-th',
+};
 
 module.exports = withBundleAnalyzer({
   rewrites: async () => nextI18NextRewrites(localeSubpaths),
