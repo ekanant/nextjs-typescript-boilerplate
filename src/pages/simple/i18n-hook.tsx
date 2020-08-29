@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import { useTranslation } from '@/i18n'
 
-interface Props {
+type Props = {
   myText: string,
   t: (arg0: string) => React.ReactNode
 }
