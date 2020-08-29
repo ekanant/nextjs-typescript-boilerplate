@@ -1,8 +1,8 @@
 import NextI18Next from "next-i18next";
-const localePath =  typeof window === "undefined" ? "public/static/locales" : "static/locales";
 import nextConfig from 'next/config'
-
 const {publicRuntimeConfig} = nextConfig()
+const basePath = publicRuntimeConfig.basePath
+const localePath =  typeof window === "undefined" ? "public/static/locales" : `${basePath}/static/locales`;
 
 const nextI18Next = new NextI18Next({
     fallbackLng: 'th-th',
