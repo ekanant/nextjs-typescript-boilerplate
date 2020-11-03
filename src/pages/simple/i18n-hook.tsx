@@ -1,18 +1,37 @@
 import React, { ReactElement } from 'react'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { useTranslation } from '@/i18n'
+import { useRouter } from 'next/router'
 
 type Props = {
   myText: string,
   t: (arg0: string) => React.ReactNode
 }
 
-const Page = (prop: Props): ReactElement => {
-  const [t, i18n] = useTranslation('content')
-  const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language)
+interface i18nMessages {
+  [key: string]: {
+    [key: string]: string,
+  },
+}
+
+const useTranslation = () => {
+  const {locale = ''} = useRouter()
+  const messages: i18nMessages = {
+    'en-th': {
+      'hello': "Hello"
+    },
+    'th-th': {
+      'hello': "สวัสดี"
+    }
+  };
+  const t = (key: string) => {
+    return messages[locale] && messages[locale][key] || t;
   }
+  return [t]
+}
+
+const Page = (prop: Props): ReactElement => {
+  const [t] = useTranslation()
   return (
     <>
       <div className="background bg-dark"></div>
@@ -46,11 +65,11 @@ const Page = (prop: Props): ReactElement => {
           <div className="row pb-3">
             <div className="col-12">
               {t('change_language')} 
-              <Link href={{ pathname: '/simple/i18n-hook', query: {} }}>
-                <a onClick={ e => {e.preventDefault(); changeLanguage('th-th');}}>TH</a>
+              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="th-th">
+                <a>TH</a>
               </Link> | 
-              <Link href={{ pathname: '/en-th/simple/i18n-hook', query: {} }}>
-                <a onClick={ e => {e.preventDefault(); changeLanguage('en-th');}}>EN</a>
+              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="en-th">
+                <a>EN</a>
               </Link>
             </div>
           </div>
