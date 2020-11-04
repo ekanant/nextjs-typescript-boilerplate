@@ -1,37 +1,26 @@
-import React, { ReactElement } from 'react'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
+import React, { ReactElement } from 'react'
+import useTranslation from 'src/i18n/useTranslation'
 
 type Props = {
   myText: string,
   t: (arg0: string) => React.ReactNode
 }
 
-interface i18nMessages {
-  [key: string]: {
-    [key: string]: string,
-  },
-}
-
-const useTranslation = () => {
-  const {locale = ''} = useRouter()
-  const messages: i18nMessages = {
-    'en-th': {
-      'hello': "Hello"
-    },
-    'th-th': {
-      'hello': "สวัสดี"
-    }
-  };
-  const t = (key: string) => {
-    return messages[locale] && messages[locale][key] || t;
-  }
-  return [t]
-}
-
 const Page = (prop: Props): ReactElement => {
-  const [t] = useTranslation()
+  const {t} = useTranslation({
+    "en-th": {
+      "hello": "Hello",
+    },
+    "th-th": {
+      "hello": "สวัสดี",
+    }
+  })
+  const renderList = []
+  for(let i = 0 ; i < 10 ; i++) {
+    renderList.push(i);
+  }
   return (
     <>
       <div className="background bg-dark"></div>
@@ -57,11 +46,6 @@ const Page = (prop: Props): ReactElement => {
               This text is from static props =&gt; {prop.myText}
             </div>
           </div>
-          <div className="row mb-3">
-            <div className="col-12">
-              This text is from i18n with namespace =&gt; {t('hello')}
-            </div>
-          </div>
           <div className="row pb-3">
             <div className="col-12">
               {t('change_language')} 
@@ -73,6 +57,18 @@ const Page = (prop: Props): ReactElement => {
               </Link>
             </div>
           </div>
+          {
+            renderList.map(i => {
+              return (
+                  <div key={i} className="row mb-3">
+                    <div className="col-12">
+                      This text is from i18n with namespace =&gt; {t('hello')}
+                    </div>
+                  </div>
+              );
+            })
+            
+          }
         </div>
       </div>
       <style jsx>{`
