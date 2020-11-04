@@ -1,9 +1,10 @@
+
+const withPreact = require('next-plugin-preact');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
 const basePath = ''
-
-module.exports = withBundleAnalyzer({
+const nextJsConfig = {
   basePath,
   i18n: {
     locales: ['en-th', 'th-th'],
@@ -17,4 +18,8 @@ module.exports = withBundleAnalyzer({
 
     return config
   }
-})
+}
+
+module.exports = withBundleAnalyzer(
+  withPreact(nextJsConfig)
+)
