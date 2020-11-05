@@ -46,13 +46,14 @@ const Page = (prop: Props): ReactElement => {
               This text is from static props =&gt; {prop.myText}
             </div>
           </div>
+          
           <div className="row pb-3">
             <div className="col-12">
               {t('change_language')} 
-              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="th-th">
+              <Link href={{ pathname: '', query: {} }} locale="th-th">
                 <a>TH</a>
               </Link> | 
-              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="en-th">
+              <Link href={{ pathname: '', query: {} }} locale="en-th">
                 <a>EN</a>
               </Link>
             </div>
