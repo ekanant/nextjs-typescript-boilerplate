@@ -9,7 +9,7 @@ interface Translate {
         i18nKey: string,
         query?: TranslationQuery,
         options?: { returnObjects?: boolean }
-    ): unknown
+    ): string
 }
 
 interface I18n {
@@ -18,13 +18,13 @@ interface I18n {
 }
 
 interface I18nDictionary {
-    [key: string]: unknown
+    [key: string]: string
 }
 
 const useTranslation = (messages: Record<string, I18nDictionary>) : I18n => {
     const { locale = '' } = useRouter()
-    const t : Translate = (key: string) => {
-        return messages[locale] && messages[locale][key] || t;
+    const t : Translate = (key: string) : string => {
+        return messages[locale] && messages[locale][key] || key;
     }
     return {t, lang: locale}
 }

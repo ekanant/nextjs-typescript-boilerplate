@@ -1,3 +1,4 @@
+import Layout from '@/components/Layout/Default'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
@@ -12,9 +13,11 @@ const Page = (prop: Props): ReactElement => {
   const {t} = useTranslation({
     "en-th": {
       "hello": "Hello",
+      "change_language": "Change language",
     },
     "th-th": {
       "hello": "สวัสดี",
+      "change_language": "เปลียนภาษา",
     }
   })
   const renderList = []
@@ -22,8 +25,7 @@ const Page = (prop: Props): ReactElement => {
     renderList.push(i);
   }
   return (
-    <>
-      <div className="background bg-dark"></div>
+    <Layout>
       <div className="container mt-5">
         <div className="bg-white rounded">
           <div className="row pt-3 mb-3">
@@ -46,15 +48,12 @@ const Page = (prop: Props): ReactElement => {
               This text is from static props =&gt; {prop.myText}
             </div>
           </div>
+          
           <div className="row pb-3">
             <div className="col-12">
-              {t('change_language')} 
-              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="th-th">
-                <a>TH</a>
-              </Link> | 
-              <Link href={{ pathname: '/simple/i18n-hook', query: {} }} locale="en-th">
-                <a>EN</a>
-              </Link>
+              {t('change_language')}&nbsp;
+              <Link href={{ pathname: '', query: {} }} locale="th-th">TH</Link> | 
+              <Link href={{ pathname: '', query: {} }} locale="en-th">EN</Link>
             </div>
           </div>
           {
@@ -71,17 +70,8 @@ const Page = (prop: Props): ReactElement => {
           }
         </div>
       </div>
-      <style jsx>{`
-        .background {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -2;
-        }
-      `}</style>
-    </>
+    </Layout>
+    
   )
 }
 
