@@ -1,3 +1,4 @@
+import Layout from '@/components/Layout/Default'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
@@ -24,8 +25,7 @@ const Page = (prop: Props): ReactElement => {
     renderList.push(i);
   }
   return (
-    <>
-      <div className="background bg-dark"></div>
+    <Layout>
       <div className="container mt-5">
         <div className="bg-white rounded">
           <div className="row pt-3 mb-3">
@@ -70,17 +70,8 @@ const Page = (prop: Props): ReactElement => {
           }
         </div>
       </div>
-      <style jsx>{`
-        .background {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -2;
-        }
-      `}</style>
-    </>
+    </Layout>
+    
   )
 }
 
