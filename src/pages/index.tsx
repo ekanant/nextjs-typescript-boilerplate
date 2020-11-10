@@ -15,7 +15,8 @@ const Page = (): ReactElement => {
           </div>
           <div className="col-12 mt-3 mb-4 text-center">
             <nav className="nav flex-column">
-              <Link href="/example/i18n-hook">i18n hook</Link>
+              <Link href="/example/i18n-hook"><a className="nav-link">i18n hook</a></Link>
+              <Link href="/example/image-optimize"><a className="nav-link">image optimization</a></Link>
             </nav>
           </div>
         </div>
