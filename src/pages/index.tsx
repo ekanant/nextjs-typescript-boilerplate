@@ -1,36 +1,22 @@
 import React, { ReactElement } from 'react'
-import { GetStaticProps } from 'next'
+import Link from 'next/link'
 
-interface Props {
-  myText: string,
-  t: (arg0: string) => React.ReactNode
-}
-
-const Page = (prop: Props): ReactElement => {
+const Page = (): ReactElement => {
   return (
     <>
       <div className="background bg-dark"></div>
       <div className="container mt-5">
-        <div className="bg-white rounded">
-          <div className="row pt-3 mb-3">
-            <div className="col-12 text-center">
-              <h1>Next.js typescript boilerplate</h1>
-            </div>
+        <div className="row bg-white rounded">
+          <div className="col-12 text-center mt-3">
+            <h1>Next.js typescript boilerplate</h1>
           </div>
-          <div className="row mb-3">
-            <div className="col-12">
-              Hello this is typescript
-            </div>
+          <div className="col-12 mt-3 text-center">
+            <h4>Hello this is next.js + typescript example</h4>
           </div>
-          <div className="row mb-3">
-            <div className="col-12">
-              Hello this is plain text
-            </div>
-          </div>
-          <div className="row mb-3">
-            <div className="col-12">
-              This text is from static props =&gt; {prop.myText}
-            </div>
+          <div className="col-12 mt-3 mb-4 text-center">
+            <nav className="nav flex-column">
+              <Link href="/example/i18n-hook">i18n hook</Link>
+            </nav>
           </div>
         </div>
       </div>
@@ -46,13 +32,6 @@ const Page = (prop: Props): ReactElement => {
       `}</style>
     </>
   )
-}
-
-export const getStaticProps : GetStaticProps = async () => {
-  return {
-    props: {},
-    revalidate: 60
-  }
 }
 
 export default Page
