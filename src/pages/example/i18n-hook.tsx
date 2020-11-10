@@ -12,9 +12,11 @@ const Page = (prop: Props): ReactElement => {
   const {t} = useTranslation({
     "en-th": {
       "hello": "Hello",
+      "change_language": "Change language",
     },
     "th-th": {
       "hello": "สวัสดี",
+      "change_language": "เปลียนภาษา",
     }
   })
   const renderList = []
@@ -49,13 +51,9 @@ const Page = (prop: Props): ReactElement => {
           
           <div className="row pb-3">
             <div className="col-12">
-              {t('change_language')} 
-              <Link href={{ pathname: '', query: {} }} locale="th-th">
-                <a>TH</a>
-              </Link> | 
-              <Link href={{ pathname: '', query: {} }} locale="en-th">
-                <a>EN</a>
-              </Link>
+              {t('change_language')}&nbsp;
+              <Link href={{ pathname: '', query: {} }} locale="th-th">TH</Link> | 
+              <Link href={{ pathname: '', query: {} }} locale="en-th">EN</Link>
             </div>
           </div>
           {
