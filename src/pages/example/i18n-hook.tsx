@@ -1,8 +1,8 @@
 import Layout from '@/components/Layout/Default'
+import useTranslation from '@/script/i18n/useTranslation'
 import { GetStaticProps } from 'next'
 import Link from 'next/link'
 import React, { ReactElement } from 'react'
-import useTranslation from 'src/i18n/useTranslation'
 
 type Props = {
   myText: string,
