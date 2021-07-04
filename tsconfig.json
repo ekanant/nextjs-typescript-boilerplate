@@ -2,8 +2,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/script/*": ["src/script/*"]
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/script/*": [
+        "src/script/*"
+      ]
     },
     "target": "es5",
     "lib": [
