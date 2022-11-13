@@ -11,7 +11,7 @@
   "dependencies": {
     "@next/bundle-analyzer": "^11.0.1",
     "bootstrap": "^4.6.0",
-    "next": "^11.0.1",
+    "next": "^13.0.3",
     "next-plugin-preact": "^3.0.6",
     "preact": "^10.5.14",
     "preact-render-to-string": "^5.1.19",
